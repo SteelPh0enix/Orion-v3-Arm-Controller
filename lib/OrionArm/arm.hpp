@@ -25,6 +25,4 @@ class OrionArm {
   MC33926 m_grasperRotationMotor;
   MC33926 m_grasperXAxisMotor;
   MC33926 m_grasperYAxisMotor;
-  std::uint8_t m_lowerActuatorPWMPin;
-  std::uint8_t m_upperActuatorPWMPin;
 };
