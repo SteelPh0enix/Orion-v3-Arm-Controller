@@ -1,8 +1,8 @@
 #pragma once
 #include <Arduino.h>
+#include <basic_motor.hpp>
 #include <cstdint>
 #include <mc33926.hpp>
-#include <basic_motor.hpp>
 
 class OrionArm {
  public:

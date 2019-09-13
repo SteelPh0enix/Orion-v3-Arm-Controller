@@ -1,5 +1,5 @@
 #include "arm.hpp"
-#include <pinout.hpp>
+#include "../../include/pinout.hpp"
 
 OrionArm::OrionArm() {
   m_turntableMotor.setPins(Pinout::TurntablePWM, Pinout::TurntableDirection,
