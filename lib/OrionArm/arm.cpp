@@ -18,15 +18,23 @@ OrionArm::OrionArm() {
   m_grasperYAxisMotor.setPins(Pinout::GrasperYPWM, Pinout::GrasperYDirection,
                               Pinout::GrasperYFeedback, Pinout::GrasperYDisable,
                               Pinout::GrasperYStatusFlag);
+
+  m_lowerActuator.setPins(Pinout::LowerArmActuatorPWM,
+                          Pinout::LowerArmActuatorDirectionA,
+                          Pinout::LowerArmActuatorDirectionB);
+
+  m_upperActuator.setPins(Pinout::UpperArmActuatorPWM,
+                          Pinout::UpperArmActuatorDirectionA,
+                          Pinout::UpperArmActuatorDirectionB);
 }
 
 void OrionArm::initialize() {
-  pinMode(Pinout::LowerArmActuatorPWM, OUTPUT);
-  pinMode(Pinout::UpperArmActuatorPWM, OUTPUT);
   m_turntableMotor.initialize();
   m_grasperRotationMotor.initialize();
   m_grasperXAxisMotor.initialize();
   m_grasperYAxisMotor.initialize();
+  m_lowerActuator.initialize();
+  m_upperActuator.initialize();
 }
 
 void OrionArm::setMotorPower(OrionArm::Motor motor, int power) {
@@ -36,11 +44,15 @@ void OrionArm::setMotorPower(OrionArm::Motor motor, int power) {
       break;
     case Motor::GrasperX:
       m_grasperXAxisMotor.setPower(power);
+      break;
     case Motor::GrasperY:
       m_grasperYAxisMotor.setPower(power);
+      break;
     case Motor::LowerActuator:
+      m_lowerActuator.setPower(power);
       break;
     case Motor::UpperActuator:
+      m_upperActuator.setPower(power);
       break;
     case Motor::Turntable:
       m_turntableMotor.setPower(power);
