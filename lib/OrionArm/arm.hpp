@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <cstdint>
 #include <mc33926.hpp>
+#include <basic_motor.hpp>
 
 class OrionArm {
  public:
@@ -21,6 +22,8 @@ class OrionArm {
   void stop();
 
  private:
+  BasicMotor m_lowerActuator;
+  BasicMotor m_upperActuator;
   MC33926 m_turntableMotor;
   MC33926 m_grasperRotationMotor;
   MC33926 m_grasperXAxisMotor;
