@@ -3,7 +3,7 @@ import json
 import copy
 import serial
 
-ARM_SERIAL_PORT = "COM5"
+ARM_SERIAL_PORT = "COM4"
 ARM_SERIAL_BAUD = 9600
 
 ARM_SERIAL = serial.Serial()
@@ -46,29 +46,29 @@ def stopArm():
 if __name__ == "__main__":
     ARM_SERIAL.open()
 
-    keyboard.add_hotkey("q", lambda: setFieldAndSend("LAC", 250))
+    keyboard.add_hotkey("q", lambda: setFieldAndSend("LAC", 150))
     keyboard.add_hotkey("a", lambda: setFieldAndSend("LAC", 0))
-    keyboard.add_hotkey("z", lambda: setFieldAndSend("LAC", -250))
+    keyboard.add_hotkey("z", lambda: setFieldAndSend("LAC", -150))
 
-    keyboard.add_hotkey("w", lambda: setFieldAndSend("UAC", 250))
+    keyboard.add_hotkey("w", lambda: setFieldAndSend("UAC", 150))
     keyboard.add_hotkey("s", lambda: setFieldAndSend("UAC", 0))
-    keyboard.add_hotkey("x", lambda: setFieldAndSend("UAC", -250))
+    keyboard.add_hotkey("x", lambda: setFieldAndSend("UAC", -150))
 
-    keyboard.add_hotkey("l", lambda: setFieldAndSend("TRT", 250))
+    keyboard.add_hotkey("l", lambda: setFieldAndSend("TRT", 150))
     keyboard.add_hotkey("k", lambda: setFieldAndSend("TRT", 0))
-    keyboard.add_hotkey("j", lambda: setFieldAndSend("TRT", -250))
+    keyboard.add_hotkey("j", lambda: setFieldAndSend("TRT", -150))
 
-    keyboard.add_hotkey("p", lambda: setFieldAndSend("GRPR", 250))
+    keyboard.add_hotkey("p", lambda: setFieldAndSend("GRPR", 150))
     keyboard.add_hotkey("o", lambda: setFieldAndSend("GRPR", 0))
-    keyboard.add_hotkey("i", lambda: setFieldAndSend("GRPR", -250))
+    keyboard.add_hotkey("i", lambda: setFieldAndSend("GRPR", -150))
 
-    keyboard.add_hotkey("e", lambda: setFieldAndSend("GRPX", 250))
+    keyboard.add_hotkey("e", lambda: setFieldAndSend("GRPX", 150))
     keyboard.add_hotkey("d", lambda: setFieldAndSend("GRPX", 0))
-    keyboard.add_hotkey("c", lambda: setFieldAndSend("GRPX", -250))
+    keyboard.add_hotkey("c", lambda: setFieldAndSend("GRPX", -150))
 
-    keyboard.add_hotkey("r", lambda: setFieldAndSend("GRPY", 250))
+    keyboard.add_hotkey("r", lambda: setFieldAndSend("GRPY", 150))
     keyboard.add_hotkey("f", lambda: setFieldAndSend("GRPY", 0))
-    keyboard.add_hotkey("v", lambda: setFieldAndSend("GRPY", -250))
+    keyboard.add_hotkey("v", lambda: setFieldAndSend("GRPY", -150))
 
     keyboard.add_hotkey("0", lambda: stopArm())
 
