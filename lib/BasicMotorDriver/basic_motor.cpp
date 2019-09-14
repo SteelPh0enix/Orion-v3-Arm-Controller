@@ -1,11 +1,13 @@
 #include "basic_motor.hpp"
 #include <Arduino.h>
 
-BasicMotor::BasicMotor(std::uint8_t PWMPin, std::uint8_t directionPinA, std::uint8_t directionPinB) {
+BasicMotor::BasicMotor(uint8_t PWMPin, uint8_t directionPinA,
+                       uint8_t directionPinB) {
   setPins(PWMPin, directionPinA, directionPinB);
 }
 
-void BasicMotor::setPins(std::uint8_t PWMPin, std::uint8_t directionPinA, std::uint8_t directionPinB) {
+void BasicMotor::setPins(uint8_t PWMPin, uint8_t directionPinA,
+                         uint8_t directionPinB) {
   m_directionPinA = directionPinA;
   m_directionPinB = directionPinB;
   m_PWMPin = PWMPin;
@@ -47,8 +49,8 @@ void BasicMotor::setDirection(BasicMotor::Direction direction) {
 }
 
 bool BasicMotor::internalInitialize() {
-    pinMode(m_PWMPin, OUTPUT);
-    pinMode(m_directionPinB, OUTPUT);
-    pinMode(m_directionPinB, OUTPUT);
-    return true;
+  pinMode(m_PWMPin, OUTPUT);
+  pinMode(m_directionPinB, OUTPUT);
+  pinMode(m_directionPinB, OUTPUT);
+  return true;
 }

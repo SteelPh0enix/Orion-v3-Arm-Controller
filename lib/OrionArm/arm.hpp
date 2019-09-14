@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
+#include <stdint.h>
 #include <basic_motor.hpp>
-#include <cstdint>
 #include <mc33926.hpp>
 
 class OrionArm {

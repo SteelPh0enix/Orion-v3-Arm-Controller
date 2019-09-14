@@ -8,13 +8,14 @@ ArduinoJson::StaticJsonDocument<Config::JsonBufferSize> jsonDoc;
 OrionArm arm;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   arm.initialize();
 }
 
 void loop() {
   if (Serial.available()) {
     Serial.readBytesUntil('\n', jsonBuffer, Config::JsonBufferSize);
+    // Serial.println(jsonBuffer);
     jsonDoc.clear();
     auto deserializationResult =
         ArduinoJson::deserializeJson(jsonDoc, jsonBuffer);
@@ -42,5 +43,6 @@ void loop() {
           deserializationResult.c_str();
     }
     ArduinoJson::serializeJson(jsonDoc, Serial);
+    Serial.println();
   }
 }

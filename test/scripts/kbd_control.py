@@ -1,5 +1,14 @@
 import keyboard
 import json
+import copy
+import serial
+
+ARM_SERIAL_PORT = "COM5"
+ARM_SERIAL_BAUD = 9600
+
+ARM_SERIAL = serial.Serial()
+ARM_SERIAL.baudrate = ARM_SERIAL_BAUD
+ARM_SERIAL.port = ARM_SERIAL_PORT
 
 ARM_DATA_JSON = {
     "LAC": 0,
@@ -12,7 +21,11 @@ ARM_DATA_JSON = {
 
 
 def sendDataToArm(data):
-    print(data)
+    data_to_send = (json.dumps(data, separators=(',', ':')) +
+                    '\r\n').encode('ascii')
+    print(data_to_send)
+    ARM_SERIAL.write(data_to_send)
+    print(ARM_SERIAL.readline())
 
 
 def setFieldAndSend(field, value):
@@ -20,7 +33,19 @@ def setFieldAndSend(field, value):
     sendDataToArm(ARM_DATA_JSON)
 
 
+def stopArm():
+    ARM_DATA_JSON["LAC"] = 0
+    ARM_DATA_JSON["UAC"] = 0
+    ARM_DATA_JSON["TRT"] = 0
+    ARM_DATA_JSON["GRPR"] = 0
+    ARM_DATA_JSON["GRPX"] = 0
+    ARM_DATA_JSON["GRPY"] = 0
+    sendDataToArm(ARM_DATA_JSON)
+
+
 if __name__ == "__main__":
+    ARM_SERIAL.open()
+
     keyboard.add_hotkey("q", lambda: setFieldAndSend("LAC", 250))
     keyboard.add_hotkey("a", lambda: setFieldAndSend("LAC", 0))
     keyboard.add_hotkey("z", lambda: setFieldAndSend("LAC", -250))
@@ -44,5 +69,7 @@ if __name__ == "__main__":
     keyboard.add_hotkey("r", lambda: setFieldAndSend("GRPY", 250))
     keyboard.add_hotkey("f", lambda: setFieldAndSend("GRPY", 0))
     keyboard.add_hotkey("v", lambda: setFieldAndSend("GRPY", -250))
+
+    keyboard.add_hotkey("0", lambda: stopArm())
 
     keyboard.wait()

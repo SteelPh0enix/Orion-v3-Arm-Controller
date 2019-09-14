@@ -1,8 +1,8 @@
 #pragma once
-#include <cstdint>
+#include <stdint.h>
 
 namespace Pinout {
-using PinT = std::uint8_t;
+using PinT = uint8_t;
 constexpr PinT LowerArmActuatorPWM{3};
 constexpr PinT LowerArmActuatorDirectionA{28};
 constexpr PinT LowerArmActuatorDirectionB{30};

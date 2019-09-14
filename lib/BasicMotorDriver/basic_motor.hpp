@@ -1,5 +1,5 @@
 #pragma once
-#include <cstdint>
+#include <stdint.h>
 #include "../Module/module.hpp"
 
 class BasicMotor : public Module {
@@ -7,12 +7,8 @@ class BasicMotor : public Module {
   enum class Direction { Forward, Backward, None };
 
   BasicMotor() = default;
-  BasicMotor(std::uint8_t PWMPin,
-             std::uint8_t directionPinA,
-             std::uint8_t directionPinB);
-  void setPins(std::uint8_t PWMPin,
-               std::uint8_t directionPin,
-               std::uint8_t directionPinB);
+  BasicMotor(uint8_t PWMPin, uint8_t directionPinA, uint8_t directionPinB);
+  void setPins(uint8_t PWMPin, uint8_t directionPin, uint8_t directionPinB);
 
   void setPower(int power);
   void setDirection(Direction forward);
@@ -22,7 +18,7 @@ class BasicMotor : public Module {
 
   int m_power{0};
 
-  std::uint8_t m_directionPinA{};
-  std::uint8_t m_directionPinB{};
-  std::uint8_t m_PWMPin{};
+  uint8_t m_directionPinA{};
+  uint8_t m_directionPinB{};
+  uint8_t m_PWMPin{};
 };
